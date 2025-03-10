@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+
+# Example times for each algorithm (replace these with your actual measured times)
+sizes = [50, 120, 1500, 18000, 15600, 25000, 25, 3540]
+
+# Replace these example times with your actual timings
+insertion_sort_times = [0.001, 0.005, 0.02, 3.1, 2.8, 4.1, 0.0005, 0.15]
+merge_sort_times = [0.0008, 0.004, 0.015, 0.8, 0.7, 1.2, 0.0004, 0.1]
+heap_sort_times = [0.0007, 0.003, 0.01, 0.5, 0.4, 0.7, 0.0003, 0.09]
+quick_sort_times = [0.0005, 0.002, 0.008, 0.3, 0.2, 0.4, 0.0002, 0.07]
+
+# Plot the graph
+plt.figure(figsize=(12, 7))
+
+# Plot each algorithm with labels and markers
+plt.plot(sizes, insertion_sort_times, label='Insertion Sort', marker='o', color='blue', markersize=6)
+plt.plot(sizes, merge_sort_times, label='Merge Sort', marker='o', color='green', markersize=6)
+plt.plot(sizes, heap_sort_times, label='Heap Sort', marker='o', color='red', markersize=6)
+plt.plot(sizes, quick_sort_times, label='Quick Sort', marker='o', color='purple', markersize=6)
+
+# Add title and axis labels
+plt.title("Sorting Algorithm Time Comparison (Different Dataset Sizes)", fontsize=16)
+plt.xlabel("Dataset Size", fontsize=14)
+plt.ylabel("Time (seconds)", fontsize=14)
+
+# Add a grid
+plt.grid(True, linestyle='--', alpha=0.7)
+
+# Add a legend
+plt.legend(title="Algorithms", loc="upper left", fontsize=12)
+
+# Annotate specific points on the graph for clarity
+for i, size in enumerate(sizes):
+    plt.annotate(f"{insertion_sort_times[i]:.4f}", (sizes[i], insertion_sort_times[i]), 
+                 textcoords="offset points", xytext=(0, 10), ha='center', fontsize=9, color='blue', bbox=dict(facecolor='white', edgecolor='blue', boxstyle='round,pad=0.5'))
+    plt.annotate(f"{merge_sort_times[i]:.4f}", (sizes[i], merge_sort_times[i]), 
+                 textcoords="offset points", xytext=(0, 10), ha='center', fontsize=9, color='green', bbox=dict(facecolor='white', edgecolor='green', boxstyle='round,pad=0.5'))
+    plt.annotate(f"{heap_sort_times[i]:.4f}", (sizes[i], heap_sort_times[i]), 
+                 textcoords="offset points", xytext=(0, 10), ha='center', fontsize=9, color='red', bbox=dict(facecolor='white', edgecolor='red', boxstyle='round,pad=0.5'))
+    plt.annotate(f"{quick_sort_times[i]:.4f}", (sizes[i], quick_sort_times[i]), 
+                 textcoords="offset points", xytext=(0, 10), ha='center', fontsize=9, color='purple', bbox=dict(facecolor='white', edgecolor='purple', boxstyle='round,pad=0.5'))
+
+# Add horizontal line at y=0 for better clarity
+plt.axhline(0, color='black',linewidth=1)
+
+# Display the plot
+plt.tight_layout()  # Ensures everything fits without overlap
+plt.show()
